@@ -127,10 +127,19 @@ winc1500_sources = files(
 	'src/wf_wifi.c'
 )
 
+winc1500_compile_args = [
+    '-mcpu=cortex-m3',
+    '-mthumb',
+    '-ffunction-sections',
+    '-fdata-sections',
+]
+
 # Build a static library for ctxLink
 libwinc1500 = static_library(
 	'winc1500',
 	winc1500_sources,
+	pic: false,
+	c_args:winc1500_compile_args,
 	include_directories: probe_winc1500_includes
 )
 
