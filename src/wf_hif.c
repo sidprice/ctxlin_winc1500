@@ -239,7 +239,8 @@ int8_t hif_send(uint8_t groupId, uint8_t opCode, uint8_t *p_ctrlBuf, uint16_t ct
 	} else {
 		hif.length += ctrlBufSize;
 	}
-	ChipWake();
+	if (!g_hifContext.hifRxDone)
+		ChipWake();
 
 //#define OPTIMIZE_BUS
 /*please define in firmware also*/
