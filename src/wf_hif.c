@@ -308,7 +308,7 @@ int8_t hif_send(uint8_t groupId, uint8_t opCode, uint8_t *p_ctrlBuf, uint16_t ct
 	}
 
 	/*actual sleep ret = M2M_SUCCESS*/
-	ChipSleep();
+	// ChipSleep();
 	return ret;
 
 ERR2:
