@@ -477,7 +477,7 @@ void nm_get_firmware_full_info(tstrM2mRev *p_revision, t_versionNumberType versi
 					return;
 				}
 				if (curr_drv_ver < min_req_drv_ver) {
-					/*The current driver version should be larger or equal 
+					/*The current driver version should be larger or equal
                     than the min driver that the current firmware support  */
 					GenerateErrorEvent(M2M_WIFI_FIRMWARE_MISMATCH_ERROR);
 					return;
@@ -964,14 +964,14 @@ void m2m_wifi_enable_firmware_log(uint8_t u8Enable)
 
 /*!
 @fn            int8_t m2m_wifi_set_battery_voltage(uint16_t batVoltx100);
-@brief        Enable or Disable logs in run time (Disable Firmware logs will 
+@brief        Enable or Disable logs in run time (Disable Firmware logs will
             enhance the firmware start-up time and performance)
 @param [in]    batVoltx100
             battery voltage multiplied by 100
 @return        The function SHALL return M2M_SUCCESS for success and a negative value otherwise.
 @sa            M2M_DISABLE_FIRMWARE_LOG (build option to disable logs from initializations)
 @pre        m2m_wifi_init
-@warning    
+@warning
 */
 void m2m_wifi_set_battery_voltage(uint16_t batVoltx100)
 {
@@ -984,11 +984,11 @@ void m2m_wifi_set_battery_voltage(uint16_t batVoltx100)
 #if defined(M2M_ENABLE_PRNG)
 /*!
 @fn                  int8_t m2m_wifi_prng_get_random_bytes(uint8_t * p_prngBuf,uint16_t size)
-@brief          Get random bytes using the PRNG bytes.          
+@brief          Get random bytes using the PRNG bytes.
 @param [in]    size
-               Size of the required random bytes to be generated.        
+               Size of the required random bytes to be generated.
 @param [in]    p_prngBuf
-                Pointer to user allocated buffer.                      
+                Pointer to user allocated buffer.
 @return           The function SHALL return M2M_SUCCESS for success and a negative value otherwise.
 */
 void m2m_wifi_prng_get_random_bytes(uint16_t size)
