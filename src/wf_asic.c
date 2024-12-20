@@ -136,33 +136,37 @@ uint32_t nmi_get_rfrevid(void)
 
 void ChipSleep(void)
 {
-	uint32_t reg;
+	// uint32_t reg;
 
-	while (1) {
-		reg = nm_read_reg(CORT_HOST_COMM);
-		if ((reg & NBIT0) == 0) {
-			break;
-		}
-	}
+	// while (1) {
+	// 	reg = nm_read_reg(CORT_HOST_COMM);
+	// 	if ((reg & NBIT0) == 0) {
+	// 		break;
+	// 	}
+	// }
 
-	/* Clear bit 1 */
-	reg = nm_read_reg(WAKE_CLK_REG);
-	if (reg & NBIT1) {
-		reg &= ~NBIT1;
-		nm_write_reg(WAKE_CLK_REG, reg);
-	}
+	// /* Clear bit 1 */
+	// reg = nm_read_reg(WAKE_CLK_REG);
+	// if (reg & NBIT1) {
+	// 	reg &= ~NBIT1;
+	// 	nm_write_reg(WAKE_CLK_REG, reg);
+	// }
 
-	reg = nm_read_reg(HOST_CORT_COMM);
-	if (reg & NBIT0) {
-		reg &= ~NBIT0;
-		nm_write_reg(HOST_CORT_COMM, reg);
-	}
+	// reg = nm_read_reg(HOST_CORT_COMM);
+	// if (reg & NBIT0) {
+	// 	reg &= ~NBIT0;
+	// 	nm_write_reg(HOST_CORT_COMM, reg);
+	// }
 }
 
 void ChipWake(void)
 {
+	static bool isAwake = false ;
 	volatile uint32_t reg = 0, clk_status_reg = 0, trials = 0;
 
+	if (isAwake)
+		return ;
+	isAwake = true ;
 	reg = nm_read_reg(HOST_CORT_COMM);
 
 	if (!(reg & NBIT0)) {
